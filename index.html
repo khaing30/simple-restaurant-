@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Cart App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🍽️ Restaurant Menu</h1>
+</header>
+
+<section class="menu">
+
+  <div class="item">
+    <h3>🍔 Burger</h3>
+    <p>¥1000</p>
+    <button onclick="addToCart('Burger', 1000)">Add</button>
+  </div>
+
+  <div class="item">
+    <h3>🍕 Pizza</h3>
+    <p>¥1200</p>
+    <button onclick="addToCart('Pizza', 1200)">Add</button>
+  </div>
+
+  <div class="item">
+    <h3>🍜 Noodles</h3>
+    <p>¥800</p>
+    <button onclick="addToCart('Noodles', 800)">Add</button>
+  </div>
+
+</section>
+
+<hr>
+
+<section>
+  <h2>🛒 Cart</h2>
+  <ul id="cartList"></ul>
+
+  <h2>💰 Total: ¥<span id="total">0</span></h2>
+
+  <button onclick="printReceipt()">🧾 Print Receipt</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
