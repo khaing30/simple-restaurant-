@@ -2,47 +2,41 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Restaurant Cart App</title>
+  <title>Restaurant Pro App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>🍽️ Restaurant Menu</h1>
+  <h1>🍽️ Restaurant</h1>
 </header>
 
-<section class="menu">
+<!-- 🔍 Search -->
+<input type="text" id="search" placeholder="Search..." onkeyup="filterMenu()">
 
-  <div class="item">
-    <h3>🍔 Burger</h3>
-    <p>¥1000</p>
-    <button onclick="addToCart('Burger', 1000)">Add</button>
-  </div>
+<!-- 📂 Category -->
+<div class="filters">
+  <button onclick="filterCategory('all')">All</button>
+  <button onclick="filterCategory('food')">Food</button>
+  <button onclick="filterCategory('drink')">Drink</button>
+</div>
 
-  <div class="item">
-    <h3>🍕 Pizza</h3>
-    <p>¥1200</p>
-    <button onclick="addToCart('Pizza', 1200)">Add</button>
-  </div>
-
-  <div class="item">
-    <h3>🍜 Noodles</h3>
-    <p>¥800</p>
-    <button onclick="addToCart('Noodles', 800)">Add</button>
-  </div>
-
-</section>
+<!-- 🍽️ Menu -->
+<div class="menu" id="menu"></div>
 
 <hr>
 
-<section>
-  <h2>🛒 Cart</h2>
-  <ul id="cartList"></ul>
+<!-- 🛒 Cart -->
+<h2>🛒 Cart</h2>
+<ul id="cartList"></ul>
+<h3>Total: ¥<span id="total">0</span></h3>
+<button onclick="checkout()">Order</button>
 
-  <h2>💰 Total: ¥<span id="total">0</span></h2>
+<hr>
 
-  <button onclick="printReceipt()">🧾 Print Receipt</button>
-</section>
+<!-- 📜 History -->
+<h2>📜 Order History</h2>
+<ul id="historyList"></ul>
 
 <script src="script.js"></script>
 </body>
