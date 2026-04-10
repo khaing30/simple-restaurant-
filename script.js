@@ -1,18 +1,12 @@
 const menuData = [
 
-  {name:"Burger",price:1000,cat:"food",img:"https://source.unsplash.com/200x150/?burger"},
+  {name:"Burger",price:1000,cat:"food",img:"https://images.unsplash.com/photo-1550547660-d9450f859349"},
 
-  {name:"Pizza",price:1200,cat:"food",img:"https://source.unsplash.com/200x150/?pizza"},
+  {name:"Coffee",price:300,cat:"drink",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93"},
 
-  {name:"Sushi",price:1500,cat:"food",img:"https://source.unsplash.com/200x150/?sushi"},
+  {name:"Juice",price:350,cat:"drink",img:"https://images.unsplash.com/photo-1551024506-0bccd828d307"},
 
-  {name:"Curry",price:900,cat:"food",img:"https://source.unsplash.com/200x150/?curry"},
-
-  {name:"Coffee",price:300,cat:"drink",img:"https://source.unsplash.com/200x150/?coffee"},
-
-  {name:"Juice",price:350,cat:"drink",img:"https://source.unsplash.com/200x150/?juice"},
-
-  {name:"Cola",price:250,cat:"drink",img:"https://source.unsplash.com/200x150/?cola"},
+  {name:"Cola",price:250,cat:"drink",img:"https://images.unsplash.com/photo-1581636625402-29b2a704ef13"},
 
 ];
 
@@ -141,21 +135,36 @@ function renderCart(){
 
 
 function checkout(){
-
   if(cart.length===0) return;
 
-  history.push({items:[...cart],date:new Date().toLocaleString()});
+  let total = 0;
+  cart.forEach(i => total += i.price * i.qty);
+
+  history.push({
+    items:[...cart],
+    total: total,
+    date:new Date().toLocaleString()
+  });
 
   cart=[];
-
   save();
-
   renderCart();
-
 }
-
-
-
 function renderHistory(){
-
   let list=document.getElementById("historyList");
+  list.innerHTML="";
+
+  history.forEach(h=>{
+    list.innerHTML+=`
+      <li>
+        ${h.date} <br>
+        ${h.items.map(i=>i.name+"("+i.qty+")").join(", ")} <br>
+        💰 Total: ¥${h.total}
+      </li>
+    `;
+  });
+} 
+
+renderMenu(menuData);
+
+renderCart(); 
